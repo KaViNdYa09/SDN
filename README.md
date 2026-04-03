@@ -29,3 +29,30 @@ This project implements a centralized SDN controller using Ryu that supports:
 ## APIs
 
 ### Submit Intent
+POST /api/intent/submit
+
+
+### Update Context
+
+POST /api/context/update
+
+
+### Get Hosts
+
+GET /api/network/hosts
+
+
+## How to Run
+
+### Start Controller
+```bash
+cd controller
+source ../venv/bin/activate
+ryu-manager main_controller.py
+Start Topology
+sudo mn -c
+sudo mn --custom topology/cloud_topology.py --topo cloud \
+--controller remote,ip=127.0.0.1,port=6633 \
+--switch ovs,protocols=OpenFlow13
+Test
+pingall
